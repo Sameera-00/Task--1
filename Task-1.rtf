@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Cambria;}}
+{\*\generator Riched20 10.0.22000}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs24\lang9  \b 1.Write a blog on Difference between HTTP1.1 vs HTTP2\b0\par
+
+\pard\ri1348\sa200\sl276\slmult1\b\f1 HTTP: \b0 HTTP stands for hypertext transfer protocol & it is used in client-server communication. By using HTTP user sends the request to the server & the server sends the response to the user. There are several stages of development of HTTP but we will focus mainly on HTTP/1.1 which was created in 1997 & the new one is HTTP/2 which was created in 2015.\par
+\b HTTP 1.1:\b0\par
+\b 1\b0 .It supports connection reuse i.e. for every TCP connection there could be multiple requests and responses, and pipelining where the client can request several resources from the server at once. However, pipelining was hard to implement due to issues such as head-of-line blocking and was not a feasible solution.\par
+\b 2\b0 .The Upgrade header was used to indicate a preference from the client that made it possible to switch to a more preferred protocol if found appropriate by the server.\par
+\b 3.\b0 HTTP/1.1 provided support for chunk transfers that allowed streaming of content dynamically as chunks and for additional headers to be sent after the message body. This enhancement was particularly useful in cases where values of a field remained unknown until the content had been produced. For example, when the content had to be digitally signed, it was not possible to do so before the entire content gets generated.\par
+\b 4\b0 .Other features that reinforced its stability were introduced such as:\par
+    > pipelining (the second request is sent before the response to the first is adequately served)\par
+    > content negotiation (an exchange between client and server to determine the media type, it also provides the provision to serve different versions of a resource at the same URI)\par
+    > cache control (used to specify caching policies in both requests and responses)\par
+\b 5\b0 .Introduces a warning header field to carry additional information about the status of a message. Can define 24 status codes, error reporting is quicker and more efficient\par
+\b 6\b0 .It is relatively secure since it uses digest authentication, NTLM authentication.\par
+\b 7\b0 .Expands on the caching support by using additional headers like cache-control, conditional headers like If-Match and by using entity tag\par
+\b 8.\b0 HTTP/1.1 provides faster delivery of web pages and reduces web traffic as compared to HTTP/1.0. However, TCP starts slowly and with domain sharding (resources can be downloaded simultaneously by using multiple domains), connection reuse and pipelining, there is an increased risk of network congestion\par
+\b HTTP2:\par
+1.\b0 It introduces the concept of a server push where the server anticipates the resources that will be required by the client and pushes them prior to the client making requests. The client retains the authority to deny the server push; however, in most cases, this feature adds a lot of efficiency to the process.\par
+\b 2.\b0 Uses multiplexing, where over a single TCP connection resources to be delivered are interleaved and arrive at the client almost at the same time. It is done using streams which can be prioritized, can have dependencies and individual flow control. It also provides a feature called server push that allows the server to send data that the client will need but has not yet requested.\par
+\b 3.\b0 Underlying semantics of HTTP such as headers, status codes remains the same.\par
+\b 4.\b0 Security concerns from previous versions will continue to be seen in HTTP/2. However, it is better equipped to deal with them due to new TLS features like connection error of type Inadequate_Security\par
+\b 5.\b0 HTTP/2 does not change much in terms of caching. With the server push feature if the client finds the resources are already present in the cache, it can cancel the pushed stream.\par
+\b 6\b0 .HTTP/2 utilizes multiplexing and server push to effectively reduce the page load time by a greater margin along with being less sensitive to network delays\b .\par
+\par
+2.Write a blog about objects and its internal representation in Javascript\par
+\b0             Objects, in JavaScript, is it\rquote s most important data-type and forms the building blocks for modern JavaScript. These objects are quite different from JavaScript\rquote s primitive data-types(Number, String, Boolean, null, undefined and symbol) in the sense that while these primitive data-types all store a single value each (depending on their types).\par
+\b Objects and properties\b0  \b :\b0\par
+\b 1.\b0 A JavaScript object has properties associated with it. A property of an object can be explained as a variable that is attached to the object. Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. The properties of an object define the characteristics of the object. You access the properties of an object with a simple dot-notation:stored. The variables don\rquote t actually store the value.\par
+\b 2\b0 .Like all JavaScript variables, both the object name (which could be a normal variable) and property name are case sensitive. You can define a property by assigning it a value. For example, let\rquote s create an object named myCar and give it properties named make, model, and year as follows:\par
+\b\fs20 var myCar = new Object();\par
+myCar.make = 'Ford';\par
+myCar.model = 'Mustang';\par
+myCar.year = 1969\b0 ;\par
+\b\fs24 3\b0 .Unassigned properties of an object are undefined (and not null )\par
+\b\fs20 myCar.color; // undefined\fs24\par
+4.\b0 Properties of JavaScript objects can also be accessed or set using a bracket notation (for more details see property accessors). Objects are sometimes called associative arrays, since each property is associated with a string value that can be used to access it. So, for example, you could access the properties of the myCar object as follows:\par
+\b\fs20 myCar['make'] = 'Ford';\par
+myCar['model'] = 'Mustang';\par
+myCar['year'] = 1969;\par
+5.\b0\fs24 You can also access properties by using a string value that is stored in a variable\fs20 :\par
+\b var propertyName = 'make';\par
+myCar[propertyName] = 'Ford';propertyName = 'model';\par
+myCar[propertyName] = 'Mustang';\par
+\par
+  INTERNAL REPRESENTATION IN JAVA SCRIPT:\par
+ 1) \b0\fs24 Create JavaScript Object with Object Literal :\par
+\fs20 >\fs24 One of easiest way to create a javascript object is object literal, simply define the property and values inside curly braces as shown below\b\par
+\fs20            let bike = \{name: 'SuperSport', maker:'Ducati', engine:'937cc'\};\par
+\par
+\b0\fs24 2)Create JavaScript Object with Constructor :\par
+>Constructor is nothing but a function and with help of new keyword, constructor function allows to create multiple objects of same flavor as shown below\b\fs20\par
+                          function Vehicle(name, maker) \{\par
+                          this.name = name;\par
+                          this.maker = maker;\par
+                       \}\par
+                       let car1 = new Vehicle(\rquote Fiesta\rquote , 'Ford\rquote );\par
+                       let car2 = new Vehicle(\rquote Santa Fe\rquote , 'Hyundai\rquote )\par
+                      console.log(car1.name);    //Output: Fiesta\par
+                      console.log(car2.name);    //Output: Santa Fe\par
+\par
+3)\b0\fs24 Using the JavaScript Keyword new:\b\fs20\par
+\b0\fs24 >The following example also creates a new JavaScript object with four properties\b\fs20 :\par
+Example:\par
+                  var person = new Object();\par
+                  person.firstName = \ldblquote John\rdblquote ;\par
+                  person.lastName = \ldblquote Doe\rdblquote ;\par
+                  person.age = 50;\par
+                  person.eyeColor = \ldblquote blue\rdblquote ;\par
+\par
+\par
+\b0\fs24\par
+\par
+\b\par
+                                                                                                                             \b0\par
+\par
+\f0\par
+\fs22\par
+}
+ 
